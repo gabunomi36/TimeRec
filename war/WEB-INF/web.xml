@@ -32,6 +32,15 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<url-pattern>/leave</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>EmployeeList</servlet-name>
+		<servlet-class>com.laughstyle.timerec.employeeListServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>EmployeeList</servlet-name>
+		<url-pattern>/employeeList</url-pattern>
+	</servlet-mapping>
+
 	<welcome-file-list>
 		<welcome-file>TimeRec.jsp</welcome-file>
 	</welcome-file-list>

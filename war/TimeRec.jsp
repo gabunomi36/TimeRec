@@ -13,7 +13,7 @@
 
 	function initialize() {
         $("#btn_1").click(function(){
-            $.json2table.parse("data/sample.json","#tbl");
+            $.json2table.parse("/employeeList","#tbl");
         });       
 	}
 	
@@ -21,6 +21,12 @@
 </script>
 <script type="text/javascript" src="scripts/plugin/jquery.plugin_trgrid.js"></script>
 
+<script type="text/javascript">
+	function getKey(object)
+	{
+		alert($(object).closest('tr').children('td:eq(1)').text());
+	}
+</script>
 <title>暫定版</title>
 
 </head>
@@ -37,7 +43,7 @@
 	
 	</table>
 	
-	<form id="arrival" method="post" action="/arrival">
+	<form id="arrival" method="post" action="">
 		<input type="submit" value="出社"/>
 	</form>
 	<form id="leave" method="post" action="/leave">
