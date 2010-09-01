@@ -4,9 +4,39 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+
+<link type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/themes/start/jquery-ui.css" rel="stylesheet" />
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+<script type="text/javascript">
+	google.load("jquery","1");
+	google.load("jqueryui","1.8");
+
+	function initialize() {
+        $("#btn_1").click(function(){
+            $.json2table.parse("data/sample.json","#tbl");
+        });       
+	}
+	
+	google.setOnLoadCallback(initialize);
+</script>
+<script type="text/javascript" src="scripts/plugin/jquery.plugin_trgrid.js"></script>
+
+<title>暫定版</title>
+
 </head>
 <body>
+    <input id="btn_1" type="button" value="プラグイン呼び出し" />
+	
+	<table id="tbl">
+		<tbody>
+			<tr>
+				<th>名前</th>
+				<th>所属</th>
+			</tr>
+		</tbody>
+	
+	</table>
+	
 	<form id="arrival" method="post" action="/arrival">
 		<input type="submit" value="出社"/>
 	</form>
