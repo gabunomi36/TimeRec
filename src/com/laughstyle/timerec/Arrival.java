@@ -34,5 +34,8 @@ public class Arrival extends HttpServlet {
 		String s = String.format("出社：%02d/%02d %02d:%02d", cal.get(Calendar.MARCH) + 1, cal.get(Calendar.DATE), cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE));
 		resp.getWriter().println(s);
 		System.out.println(s);
+		
+		SpreadController sc = new SpreadController();
+		sc.test();
 	}
 }
