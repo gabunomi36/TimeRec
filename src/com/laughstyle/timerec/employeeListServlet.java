@@ -25,7 +25,7 @@ public class employeeListServlet extends HttpServlet {
 		
 		for(int i = 0; i < 10; i++)
 		{
-			EmployeeInfo ei = new EmployeeInfo("社員", String.format("%d号", i), "data/hiroki.png", "こんにつは", "在席");
+			EmployeeInfo ei = new EmployeeInfo(String.format("%05d", i), "社員", String.format("%d号", i), "data/hiroki.png", "こんにつは", "在席");
 			list.add(ei);
 		}
 		

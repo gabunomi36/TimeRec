@@ -1,6 +1,7 @@
 package com.laughstyle.timerec.model;
 
 public class EmployeeInfo {
+	private String employeeID;
 	private String firstName = "";
 	private String lastName = "";
 	private String imageUrl = "";
@@ -12,8 +13,9 @@ public class EmployeeInfo {
 		
 	}
 	
-	public EmployeeInfo(String firstName,String lastName, String imageUrl, String profile, String status)
+	public EmployeeInfo(String emploeeID, String firstName,String lastName, String imageUrl, String profile, String status)
 	{
+		this.employeeID = emploeeID;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.imageUrl = imageUrl;
@@ -50,5 +52,13 @@ public class EmployeeInfo {
 	}
 	public String getStatus() {
 		return status;
+	}
+
+	public void setEmployeeID(String employeeID) {
+		this.employeeID = employeeID;
+	}
+
+	public String getEmployeeID() {
+		return employeeID;
 	}
 }

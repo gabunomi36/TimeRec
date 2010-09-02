@@ -14,7 +14,7 @@
 	function initialize() {
         $("#btn_1").click(function(){
             $.json2table.parse("/employeeList","#tbl");
-        });       
+        });
 	}
 	
 	google.setOnLoadCallback(initialize);
@@ -22,17 +22,28 @@
 <script type="text/javascript" src="scripts/plugin/jquery.plugin_trgrid.js"></script>
 
 <script type="text/javascript">
-	function getKey(object)
-	{
-		alert($(object).closest('tr').children('td:eq(1)').text());
-	}
+	$(function(){
+		$('.arraive').live('click', function(){
+
+			if($(this).val() == '出'){
+				$(this).val('退');
+			}
+			else{
+				$(this).val('出');
+			}
+			
+			$.post('/arrival', "", function(resp){
+				$('#status').val(resp);
+			});
+		});
+	});
 </script>
 <title>暫定版</title>
 
 </head>
 <body>
     <input id="btn_1" type="button" value="プラグイン呼び出し" />
-	
+	<input type="text" id="status" value="aaaaaaaaaa"/>
 	<table id="tbl">
 		<tbody>
 			<tr>

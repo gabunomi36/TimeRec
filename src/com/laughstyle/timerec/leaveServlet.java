@@ -18,7 +18,10 @@ public class leaveServlet extends HttpServlet {
 	@SuppressWarnings("unchecked")
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 	throws IOException {
-	
+
+		resp.setContentType("text/plain");
+		resp.setCharacterEncoding("utf-8");
+	 		
 		Calendar cal = Calendar.getInstance(Locale.JAPANESE);
 		resp.setContentType("text/html; charset=UTF-8");
 		
