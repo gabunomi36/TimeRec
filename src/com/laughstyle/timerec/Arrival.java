@@ -35,7 +35,7 @@ public class Arrival extends HttpServlet {
 		resp.getWriter().println(s);
 		System.out.println(s);
 		
-		SpreadController sc = new SpreadController();
-		sc.test();
+//		SpreadController sc = new SpreadController();
+//		sc.test();
 	}
 }

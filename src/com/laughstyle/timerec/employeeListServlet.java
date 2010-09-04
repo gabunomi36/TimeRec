@@ -22,10 +22,11 @@ public class employeeListServlet extends HttpServlet {
 	throws IOException {
 	
 		List<EmployeeInfo> list = new ArrayList<EmployeeInfo>();
+		String[] sa = new String[]{"カピバラ.jpg","コアラ.jpg","トイプードル.jpg","とうまともこ.png","とうまひろき.png","hiroki.png"};
 		
 		for(int i = 0; i < 10; i++)
 		{
-			EmployeeInfo ei = new EmployeeInfo(String.format("%05d", i), "社員", String.format("%d号", i), "data/hiroki.png", "こんにつは", "在席");
+			EmployeeInfo ei = new EmployeeInfo(String.format("%05d", i), "社員", String.format("%d号", i), String.format("data/%s", sa[i % 5]), "こんにつは", "在席");
 			list.add(ei);
 		}
 		
