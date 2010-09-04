@@ -22,7 +22,7 @@ public class employeeListServlet extends HttpServlet {
 	throws IOException {
 	
 		List<EmployeeInfo> list = new ArrayList<EmployeeInfo>();
-		String[] sa = new String[]{"カピバラ.jpg","コアラ.jpg","トイプードル.jpg","とうまともこ.png","とうまひろき.png","hiroki.png"};
+		String[] sa = new String[]{"a.JPG","b.jpg","c.JPG","c.png","d.png","hiroki.png"};
 		
 		for(int i = 0; i < 10; i++)
 		{

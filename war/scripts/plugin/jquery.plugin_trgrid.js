@@ -25,12 +25,12 @@
 						rows += "<td Valign='top'>";
 						rows += json[i]["profile"];
 						rows += "</td>";
-
+/*
 						// 状態
 						rows += "<td>";
 						rows += json[i]["status"];
 						rows += "</td>";	
-
+*/
 						rows += "<td>";
 						rows += "<div class='arrow'></div>";
 						rows += "</td>";	
@@ -42,24 +42,20 @@
 
 						// 出勤
 						rows += "<td>";
-						rows += "<input class='arraive' width='80px' height='80px' type='button' value='出'/>";
+						rows += "<div id='arraival'>";
+						rows += "<input class = 'arraive' type='radio' id = 'radio1_" + i + "' name='radio_" + i +"' /><label for='radio1_" + i + "'>出勤</label>"
+						rows += "<input class = 'leave' type='radio' id = 'radio2_" + i + "' name='radio_" + i +"' /><label for='radio2_" + i + "'>退出</label>"
+						rows += "</div>"
 						rows += "</td>";
 
 						// 外出
-						rows += "<td>";
-						rows += "<input class='leave' width='80px' height='80px' type='button' value='外'/>";
-						rows += "</td>";
-						
-						// 有給
-						rows += "<td>";
-						rows += "<input width='80px' height='80px' type='button' value='有'/>";
-						rows += "</td>";
-						
-						// 欠勤
-						rows += "<td>";
-						rows += "<input width='80px' height='80px' type='button' value='欠'/>";
-						rows += "</td>";
-						
+						rows += "<td colspan='2'>";
+						rows += "<div id='other'>";
+						rows += "<input class = 'goingout' type='checkbox' id = 'radio3_" + i + "'/><label for='radio3_" + i + "'>外出</label>"
+						rows += "<input class = 'paidvacation' type='checkbox' id = 'radio5_" + i + "'/><label for='radio5_" + i + "'>有給</label>"
+						rows += "<input class = 'absence' type='checkbox' id = 'radio6_" + i + "'/><label for='radio6_" + i + "'>欠勤</label>"
+						rows += "</div>";
+
 						// id
 						rows += "<td>";
 						rows += json[i]["employeeID"];
@@ -75,6 +71,9 @@
 			            $(this).next("tr").toggle();
 			            $(this).find('.arrow').toggleClass("up");
 			        });
+			        
+		    		$("#arraival",target).buttonset();
+		    		$("#other",target).buttonset();
 				});
 			};
 		}

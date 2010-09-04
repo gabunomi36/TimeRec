@@ -25,20 +25,44 @@
 <script type="text/javascript">
 	$(function(){
 		$('.arraive').live('click', function(){
-			if($(this).val() == '出'){
-				$(this).val('退');
-			}
-			else{
-				$(this).val('出');
-			}
-			
-			$.post('/arrival', "", function(resp){
+			var data = {"kind": "0", "id":$(this).closest('tr').children('td:eq(2)').text()};			
+			$.post('/arrival', data, function(resp){
 				$('#status').val(resp);
 			});
-
-			alert($(this).closest('tr').children('td:eq(4)').text());
 		});
-	});
+
+		$('.leave').live('click', function(){
+			var data = {"kind": "1", "id":$(this).closest('tr').children('td:eq(2)').text()};			
+			$.post('/arrival', data, function(resp){
+				$('#status').val(resp);
+			});
+		});
+
+		$('.goingout').live('click', function(){
+			var kind = "2";
+			if(!this.checked)
+				var kind = "3";
+				
+			var data = {"kind": kind, "id":$(this).closest('tr').children('td:eq(2)').text()};			
+			$.post('/arrival', data, function(resp){
+				$('#status').val(resp);
+			});
+		});
+
+		$('.paidvacation').live('click', function(){
+			var data = {"kind": "4", "id":$(this).closest('tr').children('td:eq(2)').text()};			
+			$.post('/arrival', data, function(resp){
+				$('#status').val(resp);
+			});
+		});
+
+		$('.absence').live('click', function(){
+			var data = {"kind": "5", "id":$(this).closest('tr').children('td:eq(2)').text()};			
+			$.post('/arrival', data, function(resp){
+				$('#status').val(resp);
+			});
+		});
+});
 </script>
 
 <title>暫定版</title>
@@ -55,17 +79,15 @@
         #tbl div.arrow { background:transparent url(scripts/plugin/arrows.png) no-repeat scroll 0px -16px; width:16px; height:16px; display:block;}
         #tbl div.up { background-position:0px 0px;}
     </style>
-
 </head>
 <body>
     <input id="btn_1" type="button" value="プラグイン呼び出し" />
-	<input type="text" id="status" value="aaaaaaaaaa"/>
+	<input type="text" id="status" width= "300px" value="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"/>
  	<table id="tbl">
 		<tr>
-			<th>写真</th>
-			<th>名前</th>
-			<th>コメント</th>
-			<th>状態</th>
+			<th width = '120px'>写真</th>
+			<th width = '150px'>名前</th>
+			<th width = '250px'>コメント</th>
             <th></th>
 		</tr>
 	</table>

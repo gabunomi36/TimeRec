@@ -25,13 +25,37 @@ public class Arrival extends HttpServlet {
 		resp.setCharacterEncoding("utf-8");
 
 		Calendar cal = Calendar.getInstance(Locale.JAPANESE);
-		
-	    //(5)TimeZoneオブジェクトの生成
+
 	    TimeZone tz2 = TimeZone.getTimeZone("Asia/Tokyo");
-	    //(6)TimeZoneオブジェクトの変更
 	    cal.setTimeZone(tz2);
-				
-		String s = String.format("出社：%02d/%02d %02d:%02d", cal.get(Calendar.MARCH) + 1, cal.get(Calendar.DATE), cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE));
+
+		int kind = Integer.parseInt(req.getParameter("kind"));
+		String id = req.getParameter("id");
+		
+		String sKind = "";
+		switch(kind)
+		{
+		case 0:
+			sKind = "出社";
+			break;
+		case 1:
+			sKind = "退出";
+			break;
+		case 2:
+			sKind = "外出";
+			break;
+		case 3:
+			sKind = "帰社";
+			break;
+		case 4:
+			sKind = "有給";
+			break;
+		case 5:
+			sKind = "欠勤";
+			break;
+		}
+		
+		String s = String.format("%02d/%02d %02d:%02d %sさんが%sしました", cal.get(Calendar.MARCH) + 1, cal.get(Calendar.DATE), cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), id, sKind);
 		resp.getWriter().println(s);
 		System.out.println(s);
 		
