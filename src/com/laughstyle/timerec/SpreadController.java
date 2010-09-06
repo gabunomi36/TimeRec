@@ -18,6 +18,49 @@ import com.google.gdata.util.ServiceException;
 
 public class SpreadController {
 
+	public void writeEvent(String id, String eventName, String date, String time)
+	{
+		try
+		{
+	        // このアプリケーションの名称。任意の名前を設定
+	        String applicationName = "topgate.co.jp-SpreadsheetSearch-1";
+
+	        String username = "hiroki.touma@laughstyle-office.com";
+	        String password = "tiger7";
+	        // Spreadsheetsサービスへの認証を行う
+	        SpreadsheetService service = new SpreadsheetService(applicationName);
+	        service.setUserCredentials(username, password);
+
+	        // 検索対象のスプレッドシートを取得
+	        FeedURLFactory urlFactory = FeedURLFactory.getDefault();
+	        SpreadsheetQuery spreadsheetQuery = new SpreadsheetQuery(urlFactory.getSpreadsheetsFeedUrl());
+	        spreadsheetQuery.setTitleQuery("タイムレコーダ"); // 検索対象のスプレッドシート名を指定している
+	        SpreadsheetFeed spreadsheetFeed = service.query(spreadsheetQuery,SpreadsheetFeed.class);
+	        SpreadsheetEntry spreadsheetEntry = spreadsheetFeed.getEntries().get(0);
+	        System.out.println("名前：" + spreadsheetEntry.getTitle().getPlainText());
+	 
+	        // 検索対象のワークシートを取得
+	        WorksheetEntry worksheetEntry = spreadsheetEntry.getDefaultWorksheet();
+	 
+	        // ワークシート内を検索
+	        ListQuery listQuery = new ListQuery(worksheetEntry.getListFeedUrl());
+	        
+	        ListEntry le = new ListEntry();
+	        
+			le.getCustomElements().setValueLocal("社員ID","'" + id);
+			le.getCustomElements().setValueLocal("イベント",eventName);
+			le.getCustomElements().setValueLocal("日付",date);
+			le.getCustomElements().setValueLocal("時間",time);
+	        
+	        URL listFeedUrl = worksheetEntry.getListFeedUrl();
+	        service.insert(listFeedUrl, le);
+		}
+		catch(Exception e)
+		{
+			
+		}		
+	}
+
 	public void test()
 	{
 		try

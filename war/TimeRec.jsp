@@ -15,7 +15,8 @@
 
 	function initialize() {
         $("#btn_1").click(function(){
-            $.json2table.parse("/employeeList","#tbl");
+   //         $.json2table.parse("/employeeList","#tbl");
+            $.json2list.parse("/employeeList","#list");
         });
         $("#dialog-modal").dialog({autoOpen: false});
 
@@ -36,11 +37,24 @@
 	google.setOnLoadCallback(initialize);
 </script>
 <script type="text/javascript" src="scripts/plugin/jquery.plugin_trgrid.js"></script>
+<script type="text/javascript" src="scripts/plugin/jquery.plugin.timereclist.js"></script>
+<script type="text/javascript" src="scripts/plugin/jquery.curvycorners.min.js"></script>
 <script type="text/javascript" src="scripts/plugin/jExpand.js"></script>
 
 <script type="text/javascript">
 
 	$(function(){
+		$('.item').live('click', function(){
+			$('#selid').val($(this).children('.empid').val());
+        	$("#dialog-modal").dialog({
+        		top:10,
+        		left:10,
+        		height: 100,
+        		width: 350,
+        		modal: true
+        	});
+		});
+		
 		$('.arraive').live('click', function(){
 			var data = {"kind": "0", "id":$('#selid').val()};
 			$.post('/arrival', data, function(resp){
@@ -102,6 +116,8 @@
 			            <th></th>
 					</tr>
 				</table>
+				<ul id="list">
+				</ul>
 	 		</div>
 		</div>
 		<div id="dialog-modal" title="Basic modal dialog">
