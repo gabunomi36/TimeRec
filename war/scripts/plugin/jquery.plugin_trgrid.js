@@ -70,6 +70,7 @@
 			        $("tr.odd",target).click(function(){
 			            $(this).next("tr").toggle();
 			            $(this).find('.arrow').toggleClass("up");
+			            $('#selid').val($(this).next("tr").children('td:eq(2)').text());
 			        });
 			        
 		    		$("#arraival",target).buttonset();
