@@ -35,22 +35,22 @@ public class Arrival extends HttpServlet {
 		String sKind = "";
 		switch(kind)
 		{
-		case 0:
+		case 1:
 			sKind = "出社";
 			break;
-		case 1:
+		case -1:
 			sKind = "退出";
 			break;
 		case 2:
 			sKind = "外出";
 			break;
-		case 3:
+		case -2:
 			sKind = "帰社";
 			break;
-		case 4:
-			sKind = "有給";
+		case 3:
+			sKind = "有給を申請";
 			break;
-		case 5:
+		case 4:
 			sKind = "欠勤";
 			break;
 		}

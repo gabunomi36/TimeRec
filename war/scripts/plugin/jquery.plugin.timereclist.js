@@ -15,6 +15,21 @@ var selectedItem = null;
 				return $('.empid', this).val();
 			};
 			
+			// 子要素から親を取得 
+			$.fn.getRootItem = function(){
+				return $(this).closest('li');
+			};
+			
+			// マスク値のを格納するエレメントの取得
+			$.fn.getMaskValueElement = function(){
+				return $('.maskStatus', this);
+			};
+
+			// マスク値のを格納するエレメントの取得
+			$.fn.getStatusElement = function(){
+				return $('.status', this);
+			};
+		
 			// parseメソッド追加
 			this.parse = function(target_url, target){
 				$.getJSON(target_url, function(json){
@@ -33,7 +48,7 @@ var selectedItem = null;
 						rows += json[i]["firstName"] + " " + json[i]["lastName"];
 						rows += "</span>";
 
-						// 名前
+						// ステータス
 						rows += "<div class='status'>";
 						rows += json[i]["status"];
 						rows += "</div>";
@@ -45,15 +60,16 @@ var selectedItem = null;
 
 						// ID
 						rows += "<input type='hidden' class='empid' value='" + json[i]["employeeID"] + "'/>";
+						rows += "<input type='hidden' class='maskStatus' value='0'/>";
 
 						// ボタンコンテナ
 						rows += "<div class='buttonContainer' style='display:none'>"
 						rows += "<div id='arraival'>";
-						rows += "<input class = 'arraive' type='radio' id = 'radio1_" + i + "' name='radio_" + i +"' /><label for='radio1_" + i + "'>出勤</label>"
+						rows += "<input class = 'arraive' type='radio' id = 'radio1_" + i + "' name='radio_" + i +"' /><label for='radio1_" + i + "'>出社</label>"
 						rows += "<input class = 'leave' type='radio' id = 'radio2_" + i + "' name='radio_" + i +"' /><label for='radio2_" + i + "'>退出</label>"
 						rows += "<input class = 'goingout' type='checkbox' id = 'radio3_" + i + "'/><label for='radio3_" + i + "'>外出</label>"
-						rows += "<input class = 'paidvacation' type='checkbox' id = 'radio5_" + i + "'/><label for='radio5_" + i + "'>有給</label>"
-						rows += "<input class = 'absence' type='checkbox' id = 'radio6_" + i + "'/><label for='radio6_" + i + "'>欠勤</label>"
+						rows += "<input class = 'paidvacation' type='radio' id = 'radio5_" + i  + "' name='radio_" + i　+ "'/><label for='radio5_" + i + "'>有給</label>"
+						rows += "<input class = 'absence' type='radio' id = 'radio6_" + i + "' name='radio_" + i + "'/><label for='radio6_" + i + "'>欠勤</label>"
 						rows += "</div>"
 							
 						rows += "</div>"
