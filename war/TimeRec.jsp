@@ -24,17 +24,15 @@
 <script type="text/javascript" src="scripts/plugin/jquery.plugin.timereclist.js"></script>
 <script type="text/javascript" src="scripts/plugin/jquery.curvycorners.min.js"></script>
 <script type="text/javascript" src="scripts/plugin/jquery.jgrowl_compressed.js"></script>
-<script type="text/javascript" src="scripts/plugin/jquery.blockUI.js"></script>
 <script type="text/javascript" src="scripts/plugin/jExpand.js"></script>
 
 <script type="text/javascript">
 
 	$(function(){
 		$('.arraive').live('click', function(){
-			$.blockUI({ message: '<h1><img src="scripts/plugin/busy.gif" /> Just a moment...</h1>' }); 
 			var data = {"kind": "0", "id":$('#selid').val()};
 			$.post('/arrival', data, function(resp){
-				$.unblockUI();
+				$.jGrowl(resp);
 			});
 		});
 
@@ -77,7 +75,6 @@
 	<body>
 		<div>
 			<div style="background:#ccc;border:solid 2px #333;">
-				<input type="text" id="status" width= "300px" value="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"/>
 				<input type='text' id = 'selid'/>
 			</div> 	
 		 	<div>

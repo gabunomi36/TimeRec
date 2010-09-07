@@ -1,7 +1,20 @@
+var selectedItem = null;
 (function($){
 	$.extend({
 		// namespace:json2list
 		json2list :new function(){
+			
+			// ボタンコンテナ
+			$.fn.getButtonContainer = function(){
+//				return $(this).find('.buttonContainer');
+				return $('.buttonContainer', this);
+			};
+		
+			// 社員IDの取得
+			$.fn.getEmploeeID = function(){
+				return $('.empid', this).val();
+			};
+			
 			// parseメソッド追加
 			this.parse = function(target_url, target){
 				$.getJSON(target_url, function(json){
@@ -19,6 +32,11 @@
 						rows += "<span class='epname'>";
 						rows += json[i]["firstName"] + " " + json[i]["lastName"];
 						rows += "</span>";
+
+						// 名前
+						rows += "<div class='status'>";
+						rows += json[i]["status"];
+						rows += "</div>";
 
 						// コメント
 						rows += "<span class='profile'>";
@@ -39,9 +57,7 @@
 						rows += "</div>"
 							
 						rows += "</div>"
-
 						rows += "</div>"
-
 						rows += "</li>";
 					}
 					$(target).append(rows);
@@ -58,9 +74,25 @@
 					$(".item", target).corner(settings);
 
 			        $('img',target).click(function(){
-						$('#selid').val($(this).closest('li').children('div').children('.empid').val());
-						$(".buttonContainer",target).fadeOut();
-						$(".buttonContainer", $(this).closest('li')).fadeIn(1000);
+			        	var nowSelect = $(this).closest('div');
+			        	
+						$('#selid').val($(nowSelect).getEmploeeID());
+						
+						if(selectedItem != null){
+							$(selectedItem).getButtonContainer().fadeOut();
+							$(selectedItem).height(130);
+							$('img', selectedItem).height(130).width(130);
+						}
+
+						if(selectedItem == null || (selectedItem.getEmploeeID() != nowSelect.getEmploeeID())){
+							selectedItem = nowSelect;
+							$(nowSelect).getButtonContainer().fadeIn(1000);
+							$(nowSelect).height(180);
+							$(this).height(170).width(170);
+			        	}
+						else{
+							selectedItem = null;
+						}
 			        });
 					
 					$("#arraival",target).buttonset();

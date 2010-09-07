@@ -29,16 +29,22 @@ list-style:none;
 }
 
 .item span.epname{
-	display:block;
 	font-weight:bold;
 	margin-bottom:4px;
 	font-size:18px;
 }
+.item div.status{
+	float:right;
+	margin-bottom:4px;
+	text-align:right;
+}
+
 .item span.profile{
 	display:block;
 	font-size:12px;
 	color:#666666;
-	height: 80px;
+	height: 94px;
+	border:solid 1px #DEDEDE;
 }
 .item img{
 	float:left;
@@ -50,5 +56,6 @@ list-style:none;
 }
 
 .item div.buttonContainer{
-	margin-top: 5px;
+	margin-bottom: 1px;
+	font-size:180%;
 }
