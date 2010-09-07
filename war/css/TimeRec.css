@@ -37,15 +37,17 @@ list-style:none;
 .item div.status{
 	float:right;
 	margin-bottom:4px;
+	font-weight:bold;
+	font-size:18px;
 	text-align:right;
+    color: #7777FF;
 }
 
 .item span.profile{
 	display:block;
-	font-size:12px;
+	font-size:14px;
 	color:#666666;
 	height: 94px;
-	border:solid 1px #DEDEDE;
 }
 .item img{
 	float:left;

@@ -96,15 +96,32 @@ var selectedItem = null;
 						
 						if(selectedItem != null){
 							$(selectedItem).getButtonContainer().fadeOut();
-							$(selectedItem).height(130);
-							$('img', selectedItem).height(130).width(130);
+							$(selectedItem).animate({
+								height:"130px",
+							    backgroundColor:"#EEEEEE"
+							},100);
+							$('img', selectedItem).animate({
+								height:"130px",
+							    width:"130px"
+							},100);
+
+//							$(selectedItem).height(130);
+//							$('img', selectedItem).height(130).width(130);
 						}
 
 						if(selectedItem == null || (selectedItem.getEmploeeID() != nowSelect.getEmploeeID())){
 							selectedItem = nowSelect;
-							$(nowSelect).getButtonContainer().fadeIn(1000);
-							$(nowSelect).height(180);
-							$(this).height(170).width(170);
+							$(nowSelect).getButtonContainer().fadeIn(100);
+//							$(nowSelect).height(180);
+							$(nowSelect).animate({
+								height:"180px",
+							    backgroundColor:"#FFEEEE"
+							},100);
+							$(this).animate({
+								height:"170px",
+							    width:"170px"
+							},100);
+//							$(this).height(170).width(170);
 			        	}
 						else{
 							selectedItem = null;
