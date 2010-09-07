@@ -9,16 +9,46 @@ body { font-family:Arial, Helvetica, Sans-Serif; font-size:0.8em;}
 #tbl div.arrow { background:transparent url(scripts/plugin/arrows.png) no-repeat scroll 0px -16px; width:16px; height:16px; display:block;}
 #tbl div.up { background-position:0px 0px;}
 
+#list
+{
+list-style:none;
+}
+
 .item
 {
     margin: 0 auto;
     border: 0px solid #ffffff;
     color: #000000;
-    width: 60%;
+    width: 80%;
+    height: 130px;
     padding: 20px;
     text-align: left;
     background-color: #EEEEEE;
     border: 3px solid #AAAAAA;
     margin-bottom: 5px;
-    cursor:pointer;
+}
+
+.item span.epname{
+	display:block;
+	font-weight:bold;
+	margin-bottom:4px;
+	font-size:18px;
+}
+.item span.profile{
+	display:block;
+	font-size:12px;
+	color:#666666;
+	height: 80px;
+}
+.item img{
+	float:left;
+	margin-right:14px;
+	padding:4px;
+	border:solid 1px #DEDEDE;
+    background-color: #FFFFff;
+	cursor:pointer;
+}
+
+.item div.buttonContainer{
+	margin-top: 5px;
 }

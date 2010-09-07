@@ -13,17 +13,33 @@
 						rows += "<div class='item'>"
 
 						// 顔写真
-						rows += "<img width='80px' height='80px' src='" + json[i]["imageUrl"] + "'/>";
+						rows += "<img width='120px' height='120px' src='" + json[i]["imageUrl"] + "'/>";
 
 						// 名前
+						rows += "<span class='epname'>";
 						rows += json[i]["firstName"] + " " + json[i]["lastName"];
+						rows += "</span>";
 
 						// コメント
+						rows += "<span class='profile'>";
 						rows += json[i]["profile"];
+						rows += "</span>";
 
-						// コメント
-						rows += "<input type='text' class='empid' value='" + json[i]["employeeID"] + "'/>";
-						
+						// ID
+						rows += "<input type='hidden' class='empid' value='" + json[i]["employeeID"] + "'/>";
+
+						// ボタンコンテナ
+						rows += "<div class='buttonContainer' style='display:none'>"
+						rows += "<div id='arraival'>";
+						rows += "<input class = 'arraive' type='radio' id = 'radio1_" + i + "' name='radio_" + i +"' /><label for='radio1_" + i + "'>出勤</label>"
+						rows += "<input class = 'leave' type='radio' id = 'radio2_" + i + "' name='radio_" + i +"' /><label for='radio2_" + i + "'>退出</label>"
+						rows += "<input class = 'goingout' type='checkbox' id = 'radio3_" + i + "'/><label for='radio3_" + i + "'>外出</label>"
+						rows += "<input class = 'paidvacation' type='checkbox' id = 'radio5_" + i + "'/><label for='radio5_" + i + "'>有給</label>"
+						rows += "<input class = 'absence' type='checkbox' id = 'radio6_" + i + "'/><label for='radio6_" + i + "'>欠勤</label>"
+						rows += "</div>"
+							
+						rows += "</div>"
+
 						rows += "</div>"
 
 						rows += "</li>";
@@ -40,11 +56,14 @@
 					          validTags: ["div"]
 					      };
 					$(".item", target).corner(settings);
-/*					
-			        $(".item",target).click(function(){
-			        	alert('aaaaaaaaaaa');
+
+			        $('img',target).click(function(){
+						$('#selid').val($(this).closest('li').children('div').children('.empid').val());
+						$(".buttonContainer",target).fadeOut();
+						$(".buttonContainer", $(this).closest('li')).fadeIn(1000);
 			        });
-*/
+					
+					$("#arraival",target).buttonset();
 				});
 			};
 		}
