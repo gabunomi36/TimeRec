@@ -24,7 +24,6 @@
 <script type="text/javascript" src="scripts/plugin/jquery.plugin.timereclist.js"></script>
 <script type="text/javascript" src="scripts/plugin/jquery.curvycorners.min.js"></script>
 <script type="text/javascript" src="scripts/plugin/jquery.jgrowl_compressed.js"></script>
-<script type="text/javascript" src="scripts/plugin/jExpand.js"></script>
 
 <script type="text/javascript">
 
